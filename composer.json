@@ -1,0 +1,42 @@
+{
+    "name": "paulhennell/faker-news",
+    "description": "Faker provider for fake news!",
+    "keywords": [
+        "paulhennell",
+        "faker-news"
+    ],
+    "homepage": "https://github.com/paulhennell/faker-news",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Paul Hennell",
+            "email": "git@hennell.dev",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Paulhennell\\FakerNews\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Paulhennell\\FakerNews\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
