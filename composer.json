@@ -3,7 +3,9 @@
     "description": "Faker provider for fake news!",
     "keywords": [
         "paulhennell",
-        "faker-news"
+        "faker-news",
+        "faker",
+        "data",
     ],
     "homepage": "https://github.com/paulhennell/faker-news",
     "license": "MIT",
