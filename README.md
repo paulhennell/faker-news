@@ -5,7 +5,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/paulhennell/faker-news.svg?style=flat-square)](https://scrutinizer-ci.com/g/paulhennell/faker-news)
 [![Total Downloads](https://img.shields.io/packagist/dt/paulhennell/faker-news.svg?style=flat-square)](https://packagist.org/packages/paulhennell/faker-news)
 
-This is a custom provider for [fzaniotto/Faker](https://github.com/fzaninotto/Faker) generating fake news headlines for use when testing website design. 
+This is a custom provider for [fzaniotto/Faker](https://github.com/fzaninotto/Faker) generating fake news headlines for use when testing website design. Also includes a fake news source name generator.
 
 ## Installation
 
@@ -20,12 +20,47 @@ composer require paulhennell/faker-news
 ``` php
 $faker = (new \Faker\Factory())::create();
 $faker->addProvider(new \Faker\Provider\Fakenews($faker));
-
+$faker->addProvider(new \Faker\Provider\Fakenewssource($faker));
 
 // generate a headline
-echo $faker->headline(); 
+echo $faker->headline;
+
+// generate a named newssource (75% Newspapers, 25% TV news as below)
+echo $faker->NewssourceName;
+
+// generate a Newspaper name
+// 'The Daily Texas', 'The Morning Herald', 'Manchester Post' etc
+echo $faker->NewspaperName;
+
+// generate a TV source name
+// 'KKN News', 'ATV', 'JKK 247' etc
+echo $faker->TvNewsName;
 
 ```
+### Example Laravel Factory Useage
+
+``` php
+
+<?php
+
+
+use App\NewsStory;
+use Faker\Generator as Faker;
+
+$factory->define(NewsStory::class, function (Faker $faker) {
+    $faker->addProvider(new \Faker\Provider\Fakenews($faker));
+    $faker->addProvider(new \Faker\Provider\Fakenewssource($faker));
+    return [
+        'headline' => $faker->headline,
+        'source' => $faker->newssourcename,
+        'summary' => $faker->text,
+        'url' => $faker->unique()->url,
+    ];
+});
+
+
+```
+
 
 ### Testing
 
@@ -40,10 +75,6 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-### Security
-
-If you discover any security related issues, please email security@hennell.dev instead of using the issue tracker.
 
 ## Credits
 
