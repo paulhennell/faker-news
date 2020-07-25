@@ -5,7 +5,7 @@
         "paulhennell",
         "faker-news",
         "faker",
-        "data",
+        "data"
     ],
     "homepage": "https://github.com/paulhennell/faker-news",
     "license": "MIT",
