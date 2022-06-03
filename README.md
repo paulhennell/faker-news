@@ -5,7 +5,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/paulhennell/faker-news.svg?style=flat-square)](https://scrutinizer-ci.com/g/paulhennell/faker-news)
 [![Total Downloads](https://img.shields.io/packagist/dt/paulhennell/faker-news.svg?style=flat-square)](https://packagist.org/packages/paulhennell/faker-news)
 
-This is a custom provider for [fzaniotto/Faker](https://github.com/fzaninotto/Faker) generating fake news headlines for use when testing website design. Also includes a fake news source name generator.
+This is a custom provider for [fakerphp/Faker](https://fakerphp.github.io/) generating fake news headlines for use when testing website design. Also includes a fake news source name generator.
 
 ## Installation
 
