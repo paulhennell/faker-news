@@ -37,27 +37,31 @@ echo $faker->NewspaperName;
 echo $faker->TvNewsName;
 
 ```
-### Example Laravel Factory Useage
+### Laravel Factory Setup
+
+Create a FakerService provider (and register in bootstrap/providers.php
 
 ``` php
 
-<?php
+class FakerServiceProvider extends ServiceProvider
+{
+    public function register(): void
+    {
+        $this->app->singleton(\Faker\Generator::class, function () {
+            $faker = \Faker\Factory::create();
+            $faker->addProvider(new Fakenews($faker));
+            $faker->addProvider(new Fakenewssource($faker));
+            return $faker;
+        });
+    }
 
+```
+You can now access the fields in the model factories:
 
-use App\NewsStory;
-use Faker\Generator as Faker;
+``` php
 
-$factory->define(NewsStory::class, function (Faker $faker) {
-    $faker->addProvider(new \Faker\Provider\Fakenews($faker));
-    $faker->addProvider(new \Faker\Provider\Fakenewssource($faker));
-    return [
-        'headline' => $faker->headline,
-        'source' => $faker->newssourcename,
-        'summary' => $faker->text,
-        'url' => $faker->unique()->url,
-    ];
-});
-
+'headline' => $this->faker->headline(),
+'publisher' => $this->faker->NewssourceName(),
 
 ```
 
